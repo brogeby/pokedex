@@ -15,15 +15,55 @@ cd pokedex
 npm install
 ```
 
-3. Run the application in development mode:
+3. Run Development Server with ts-node-dev
+
+The development server is set up to use `ts-node-dev` for automatic code reloading. Run the following command to start the development server:
 
 ```bash
 npm run dev
 ```
 
-4. Access the API at http://localhost:3000.
+This will watch for changes in your TypeScript files and automatically restart the server.
 
-## API Endpoints with cURL's
+4. Build the Project
+
+To build the project for production, use the following command:
+
+```bash
+npm run build
+```
+
+This command will clean the `dist` folder and compile TypeScript files into JavaScript.
+
+5. Start the Production Server
+
+After building the project, start the production server using:
+
+```bash
+npm start
+```
+
+6. Run Tests with ts-mocha for Development
+
+For development purposes, tests are executed using `ts-mocha`. This allows for running tests directly from TypeScript files, providing a smoother development experience.
+
+```bash
+npm run dev:test
+```
+
+### 6. Run Tests with Mocha for the Dist Folder
+
+For testing the compiled code in the `dist` folder, use the following command:
+
+```bash
+npm test
+```
+
+This command runs tests using `mocha` on the JavaScript files in the `dist` directory.
+
+7. Access the API at http://localhost:3000.
+
+## API Endpoints
 
 ### 1. **Login**
 
