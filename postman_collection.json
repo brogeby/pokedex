@@ -1,0 +1,206 @@
+{
+  "info": {
+    "_postman_id": "0806d4b5-e51c-4cae-a6ce-935dc61393f6",
+    "name": "Pokedex",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "11114233"
+  },
+  "item": [
+    {
+      "name": "Login",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"randominfo\": \"veryrandom\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/auth/login",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["auth", "login"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Find Pokemons",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{PokedexToken}}",
+              "type": "string"
+            },
+            {
+              "key": "scope",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/pokemons",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["pokemons"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Find Pokemon",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{PokedexToken}}",
+              "type": "string"
+            },
+            {
+              "key": "scope",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/pokemons/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["pokemons", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create Pokemon",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{PokedexToken}}",
+              "type": "string"
+            },
+            {
+              "key": "scope",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"url\": \"https://pokeapi.co/api/v2/pokemon/6\",\n    \"name\": \"Charizard\",\n    \"details\": {\n        \"height\": 200\n    }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/pokemons",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["pokemons"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update Pokemon",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{PokedexToken}}",
+              "type": "string"
+            },
+            {
+              "key": "scope",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"Ivysaur the Second\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/pokemons/2",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["pokemons", "2"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete Pokemon",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{PokedexToken}}",
+              "type": "string"
+            },
+            {
+              "key": "scope",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "http://localhost:3000/pokemons/2",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["pokemons", "2"]
+        }
+      },
+      "response": []
+    }
+  ]
+}
