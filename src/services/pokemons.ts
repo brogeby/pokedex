@@ -1,4 +1,4 @@
-import { PokemonInput, PokemonUpdateInput } from 'src/db/pokemonDTO'
+import { PokemonInput, PokemonUpdateInput } from '../db/pokemonDTO'
 import { PokemonRepository } from '../db/PokemonRepository'
 
 const pokemonRepository = new PokemonRepository()

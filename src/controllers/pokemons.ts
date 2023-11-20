@@ -1,5 +1,7 @@
 import { Request, Response } from 'express'
 import * as pokemonService from '../services/pokemons'
+import { pokemonInputSchema, pokemonUpdateSchema } from '../db/pokemonDTO'
+import { validateSchema, ValidationError } from '../utils/schemaValidator'
 
 export const getPokemons = async (req: Request, res: Response) => {
   const pokemons = await pokemonService.getPokemons()
@@ -32,16 +34,22 @@ export const createPokemon = async (req: Request, res: Response) => {
   const inputData = req.body
 
   try {
-    const createdPokemon = await pokemonService.createPokemon(inputData)
+    const validatedData = validateSchema(pokemonInputSchema, inputData)
+
+    const createdPokemon = await pokemonService.createPokemon(validatedData)
 
     res.status(201).json(createdPokemon)
   } catch (error) {
-    let errorMessage = 'Internal Server Error'
-    if (error instanceof Error) {
-      errorMessage = error.message
-    }
+    if (error instanceof ValidationError) {
+      res.status(400).json({ message: error.errors.issues })
+    } else {
+      let errorMessage = 'Internal Server Error'
+      if (error instanceof Error) {
+        errorMessage = error.message
+      }
 
-    res.status(404).json({ message: errorMessage })
+      res.status(404).json({ message: errorMessage })
+    }
   }
 }
 
@@ -50,19 +58,25 @@ export const updatePokemon = async (req: Request, res: Response) => {
   const inputData = req.body
 
   try {
+    const validatedData = validateSchema(pokemonUpdateSchema, inputData)
+
     const updatedPokemon = await pokemonService.updatePokemon(
       Number(id),
-      inputData
+      validatedData
     )
 
     res.status(200).json(updatedPokemon)
   } catch (error) {
-    let errorMessage = 'Internal Server Error'
-    if (error instanceof Error) {
-      errorMessage = error.message
-    }
+    if (error instanceof ValidationError) {
+      res.status(400).json({ message: error.errors.issues })
+    } else {
+      let errorMessage = 'Internal Server Error'
+      if (error instanceof Error) {
+        errorMessage = error.message
+      }
 
-    res.status(404).json({ message: errorMessage })
+      res.status(404).json({ message: errorMessage })
+    }
   }
 }
 
