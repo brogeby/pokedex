@@ -1,4 +1,4 @@
-import { pokedex } from '.'
+import { pokedex } from './pokedex'
 import { Pokemon } from './pokemonDTO'
 
 export class PokemonRepository {
